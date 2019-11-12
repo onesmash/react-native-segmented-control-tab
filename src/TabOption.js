@@ -145,61 +145,59 @@ export default class TabOption extends PureComponent<Props> {
         disabled={!enabled}
         activeOpacity={activeTabOpacity}
       >
-        <View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text
+        <View style={{ flexDirection: 'row' }}>
+          <Text
+            style={[
+              styles.tabTextStyle,
+              tabTextStyle,
+              isTabActive
+                ? [styles.activeTabTextStyle, activeTabTextStyle]
+                : {},
+            ]}
+            numberOfLines={textNumberOfLines}
+            allowFontScaling={allowFontScaling}
+            ellipsizeMode="tail"
+          >
+            {text}
+          </Text>
+          {Boolean(badge) && (
+            <View
               style={[
-                styles.tabTextStyle,
-                tabTextStyle,
+                styles.tabBadgeContainerStyle,
+                tabBadgeContainerStyle,
                 isTabActive
-                  ? [styles.activeTabTextStyle, activeTabTextStyle]
+                  ? [
+                    styles.activeTabBadgeContainerStyle,
+                    activeTabBadgeContainerStyle,
+                  ]
                   : {},
               ]}
-              numberOfLines={textNumberOfLines}
-              allowFontScaling={allowFontScaling}
-              ellipsizeMode="tail"
             >
-              {text}
-            </Text>
-            {Boolean(badge) && (
-              <View
+              <Text
                 style={[
-                  styles.tabBadgeContainerStyle,
-                  tabBadgeContainerStyle,
+                  styles.tabBadgeStyle,
+                  tabBadgeStyle,
                   isTabActive
-                    ? [
-                      styles.activeTabBadgeContainerStyle,
-                      activeTabBadgeContainerStyle,
-                    ]
+                    ? [styles.activeTabBadgeStyle, activeTabBadgeStyle]
                     : {},
                 ]}
+                allowFontScaling={allowFontScaling}
               >
-                <Text
-                  style={[
-                    styles.tabBadgeStyle,
-                    tabBadgeStyle,
-                    isTabActive
-                      ? [styles.activeTabBadgeStyle, activeTabBadgeStyle]
-                      : {},
-                  ]}
-                  allowFontScaling={allowFontScaling}
-                >
-                  {badge}
-                </Text>
-              </View>
-            )}
-          </View>
-          {
-            indicateLine && (
-              <View
-                style={[{
-                  height: 0,
-                  alignSelf: 'center',
-                }, isTabActive ? indicateLineStyle : {}]}
-              />
-            )
-          }
+                {badge}
+              </Text>
+            </View>
+          )}
         </View>
+        {
+          indicateLine && (
+            <View
+              style={[{
+                height: 0,
+                alignSelf: 'center',
+              }, isTabActive ? indicateLineStyle : {}]}
+            />
+          )
+        }
       </TouchableOpacity>
     )
   }
