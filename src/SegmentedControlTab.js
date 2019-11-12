@@ -137,6 +137,8 @@ export default class SegmentedControlTab extends PureComponent<Props> {
       accessibilityLabels,
       activeTabOpacity,
       enabled,
+      indicateLine,
+      indicateLineStyle,
     } = this.props
     const firstTabStyleDefault = [
       {
@@ -204,6 +206,8 @@ export default class SegmentedControlTab extends PureComponent<Props> {
               accessible={accessible}
               accessibilityLabel={accessibilityText || item}
               enabled={enabled}
+              indicateLine={indicateLine}
+              indicateLineStyle={indicateLineStyle}
             />
           )
         })}
